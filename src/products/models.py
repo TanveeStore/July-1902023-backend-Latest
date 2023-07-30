@@ -151,7 +151,7 @@ class Product(TimeStampMixin):
                             help_text="ex. kilogram, Pcs, packets.")
     qty = models.PositiveIntegerField(
         "Quantity", null=False, blank=False, default=1)
-    price = models.FloatField(max_length=100, null=False, blank=False)
+    price = models.FloatField(max_length=100, null=False, blank=False, default=None)
     discount_price = models.FloatField(max_length=100, null=False, blank=False, default=0.0)
     tax = models.DecimalField("Tax(%)", blank=True, null=True, max_digits=12, decimal_places=2,
                               default=0.00)
