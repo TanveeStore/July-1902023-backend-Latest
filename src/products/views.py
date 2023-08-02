@@ -370,9 +370,9 @@ class ProductByLocationAPIView(APIView):
             listData = []
 
             for oneProduct in serializer.data:
-                print(oneProduct)
-                oneProduct['offer_price'] = oneProduct['price'] - oneProduct['discount_price']
-                del oneProduct['discount_price']
+                # print(oneProduct)
+                # oneProduct['offer_price'] = oneProduct['price'] - oneProduct['discount_price']
+                # del oneProduct['discount_price']
                 prodobj = Product.objects.get(id=oneProduct['id'])
                 product_query_set = ProductWeight.objects.filter(product=prodobj)
                 product_weights = ProductWeightSerializer(product_query_set, many=True)

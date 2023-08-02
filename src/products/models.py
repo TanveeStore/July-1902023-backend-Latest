@@ -145,14 +145,14 @@ class Product(TimeStampMixin):
         Tags, related_name="product_tags", blank=True) '''
     '''related_products = models.ManyToManyField(
         'self', blank=True, related_name='related_products')'''
-    weight = models.CharField("Product Weight", max_length=10, blank=True, null=True,
-                              help_text="ex. 1, 1.5, 2, 5, 10.")
-    uom = models.ForeignKey(UnitofMeasure, on_delete=models.CASCADE, blank=True, null=True,
-                            help_text="ex. kilogram, Pcs, packets.")
-    qty = models.PositiveIntegerField(
-        "Quantity", null=False, blank=False, default=1)
-    price = models.FloatField(max_length=100, null=False, blank=False, default=None)
-    discount_price = models.FloatField(max_length=100, null=False, blank=False, default=0.0)
+    # weight = models.CharField("Product Weight", max_length=10, blank=True, null=True,
+    #                           help_text="ex. 1, 1.5, 2, 5, 10.")
+    # uom = models.ForeignKey(UnitofMeasure, on_delete=models.CASCADE, blank=True, null=True,
+    #                         help_text="ex. kilogram, Pcs, packets.")
+    # qty = models.PositiveIntegerField(
+    #     "Quantity", null=False, blank=False, default=1)
+    # price = models.FloatField(max_length=100, null=False, blank=False, default=None)
+    # discount_price = models.FloatField(max_length=100, null=False, blank=False, default=0.0)
     tax = models.DecimalField("Tax(%)", blank=True, null=True, max_digits=12, decimal_places=2,
                               default=0.00)
     '''related_products = models.ManyToManyField(
@@ -210,7 +210,7 @@ class ProductWeight(TimeStampMixin):
                             help_text="ex. kilogram, Pcs, packets.")
     
     def __str__(self):
-        return ((self.product.name) + " | " + (self.weight))
+        return ((self.product.name) + " | " + str(self.weight))
 
 # Products Specifications Model
 # class ProductDetail(TimeStampMixin):

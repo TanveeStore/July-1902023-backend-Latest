@@ -43,7 +43,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     category = CategorySerializer()       # serialize the category fields of Product Model
     brand_name = BrandSerializer()
-    uom = UoMSerializer()  # serialize the uom fields of Product Model
+    # uom = UoMSerializer()  # serialize the uom fields of Product Model
     sizes = SizeSerializer()
 
     # serialize the brand fields of Product Model                 # serialize the size_type fields of Product Model
