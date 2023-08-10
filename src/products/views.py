@@ -355,8 +355,6 @@ class ProductByLocationAPIView(APIView):
                         oneProduct["selectedQuantity"] = 0
                         oneProduct["cartId"] = 0
 
-                    # add distance in product data
-                    # oneProduct["vendorAddress"] = vendorAddress
                     oneProduct["vendorDistance"] = distanceBetweenVendorAndUser
                     listData.append(
                         oneProduct)  # append(add) that product in list  which is less than vendorObj.distance
@@ -370,26 +368,14 @@ class ProductByLocationAPIView(APIView):
             listData = []
 
             for oneProduct in serializer.data:
-                # print(oneProduct)
-                # oneProduct['offer_price'] = oneProduct['price'] - oneProduct['discount_price']
-                # del oneProduct['discount_price']
                 prodobj = Product.objects.get(id=oneProduct['id'])
                 product_query_set = ProductWeight.objects.filter(product=prodobj)
                 product_weights = ProductWeightSerializer(product_query_set, many=True)
                 oneProduct['quantities'] = []
                 for product_weight in product_weights.data:
                     product_weight['offer_price'] = product_weight['price'] - product_weight['discount_price']
+                    print(type(product_weight['uom']), product_weight['uom'])
                     oneProduct['quantities'].append(product_weight)
-                prodobj = Product.objects.get(id=oneProduct['id'])
-                product_weights = ProductWeight.objects.filter(product=prodobj)
-                oneProduct['quantities'] = []
-                for product_weight in product_weights:
-                    different_quantities = {}
-                    different_quantities['id'] = product_weight.id
-                    different_quantities['weight'] = product_weight.weight
-                    different_quantities['price'] = product_weight.price
-
-                    oneProduct['quantities'].append(different_quantities)
                 listData.append(oneProduct)  # append(add) that product in list  which is less than vendorObj.distance
 
         return Response(

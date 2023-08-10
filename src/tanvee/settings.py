@@ -127,7 +127,7 @@ ASGI_APPLICATION = "tanvee.asgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testtanvee1',
+        'NAME': 'latest-tanvee',
         'USER': 'root',
         'PASSWORD': '123456789',
         'HOST': 'localhost',
