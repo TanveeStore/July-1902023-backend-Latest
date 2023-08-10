@@ -10,10 +10,10 @@ class Migration(migrations.Migration):
         ('products', '0008_auto_20230730_2115'),
     ]
 
-    operations = [
-        migrations.AddField(
-            model_name='product',
-            name='sizes',
-            field=models.ForeignKey(blank=True, default=None, help_text='ex. Small, Medium, Large.', on_delete=django.db.models.deletion.CASCADE, to='products.size'),
-        ),
-    ]
+    # operations = [
+    #     migrations.AddField(
+    #         model_name='product',
+    #         name='sizes',
+    #         field=models.ForeignKey(blank=True, default=None, help_text='ex. Small, Medium, Large.', on_delete=django.db.models.deletion.CASCADE, to='products.size'),
+    #     ),
+    # ]
